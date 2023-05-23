@@ -13,7 +13,7 @@ CREATE TABLE administrador (
 --Usuario
 DROP TABLE IF EXISTS usuario;
 CREATE TABLE usuario (
-    id_usuario INT NOT NULL,
+    id_usuario INT NOT NULL auto_increment,
     nombre VARCHAR(50) NOT NULL,
     apellidoP VARCHAR(50) NOT NULL,
     apellidoM VARCHAR(50) NOT NULL,
