@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 db = SQLAlchemy()
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://ferfong:Developer123!@localhost:3306/prueba"
+app.config['SQLALCHEMY_DATABASE_URI'] = ""
 app.config.from_mapping(
     SECRET_KEY='dev'
 )
@@ -15,4 +15,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
