@@ -1,121 +1,110 @@
--- Tabla: Administrador
+-- Vendedor
 DROP TABLE IF EXISTS administrador;
 CREATE TABLE administrador (
-    id_admin VARCHAR(200) NOT NULL,
-    nombre VARCHAR(45) NOT NULL,
-    apellidoP VARCHAR(45) NOT NULL,
-    apellidoM VARCHAR(45) NOT NULL,
-    correo VARCHAR(255) NOT NULL,
-    telefono VARCHAR(20) NOT NULL,
-    contraseña VARCHAR(45) NOT NULL,
-    PRIMARY KEY (id_admin)
+  admin_id VARCHAR(200) NOT NULL,
+  nombre VARCHAR(45) NOT NULL,
+  apellidoP VARCHAR(45) NOT NULL,
+  apellidoM VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  password VARCHAR(45) NOT NULL,
+  telefono INT NOT NULL,
+  PRIMARY KEY (admin_id)
 );
 
--- Tabla: Vendedor
-DROP TABLE IF EXISTS vendedor;
-CREATE TABLE vendedor (
-    id_vendedor INT NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
-    apellidoP VARCHAR(50) NOT NULL,
-    apellidoM VARCHAR(50) NOT NULL,
-    edad INT NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(50) NOT NULL,
-    telefono VARCHAR(20),
-    rol VARCHAR(20) NOT NULL,
-    PRIMARY KEY (id_vendedor)
-);
-
--- Tabla: Usuario
+-- Usuario
 DROP TABLE IF EXISTS usuario;
 CREATE TABLE usuario (
-    id_usuario INT NOT NULL,
+    usuario_id INT NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     apellidoP VARCHAR(50) NOT NULL,
     apellidoM VARCHAR(50) NOT NULL,
     edad INT NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     password VARCHAR(50) NOT NULL,
     telefono VARCHAR(20),
-    rol VARCHAR(20) NOT NULL,
-    PRIMARY KEY (id_usuario)
+    PRIMARY KEY (usuario_id)
 );
 
--- Tabla: Producto
+-- Vendedor
+DROP TABLE IF EXISTS vendedor;
+CREATE TABLE vendedor (
+    vendedor_id INT NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    apellidoP VARCHAR(50) NOT NULL,
+    apellidoM VARCHAR(50) NOT NULL,
+    edad INT NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    telefono VARCHAR(20),
+    PRIMARY KEY (vendedor_id)
+);
+
+-- Producto
 DROP TABLE IF EXISTS producto;
 CREATE TABLE producto (
-    id_producto INT NOT NULL,
+    producto_id INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     precio DECIMAL(10, 2) NOT NULL,
-    descripcion MEDIUMTEXT NOT NULL,
-    img VARCHAR(100),
-    inventario INT NOT NULL,
-    PRIMARY KEY (id_producto)
+    img VARCHAR(255), 
+    PRIMARY KEY (producto_id)
 );
 
--- Tabla: Pedido
-DROP TABLE IF EXISTS pedido;
-CREATE TABLE pedido (
-    id_pedido INT NOT NULL,
-    id_cliente INT NOT NULL,
-    id_vendedor INT NOT NULL,
-    reporte_generado_id INT,
-    status VARCHAR(20) NOT NULL,
-    PRIMARY KEY (id_pedido),
-    FOREIGN KEY (id_cliente) REFERENCES usuario (id_usuario),
-    FOREIGN KEY (id_vendedor) REFERENCES usuario (id_usuario),
-    FOREIGN KEY (reporte_generado_id) REFERENCES reporte (id_reporte)
-);
-
--- Tabla: Reporte
+-- Reporte
 DROP TABLE IF EXISTS reporte;
 CREATE TABLE reporte (
-    id_reporte INT NOT NULL,
+    reporte_id INT NOT NULL,
+    cliente_id INT NOT NULL,
     direccion VARCHAR(200) NOT NULL,
     monto INT NOT NULL,
-    id_cliente INT NOT NULL,
-    forma_pago VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id_reporte),
-    FOREIGN KEY (id_cliente) REFERENCES usuario (id_usuario)
+    pedido_id INT NOT NULL,
+    PRIMARY KEY (reporte_id),
+    FOREIGN KEY (cliente_id) REFERENCES usuario (usuario_id)
 );
 
--- Tabla: Contener_productos
-DROP TABLE IF EXISTS contener_productos;
-CREATE TABLE contener_productos (
-    id_pedido INT NOT NULL,
-    id_producto INT NOT NULL,
-    PRIMARY KEY (id_pedido, id_producto),
-    FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido),
-    FOREIGN KEY (id_producto) REFERENCES producto (id_producto)
+-- Pedido
+DROP TABLE IF EXISTS pedido;
+CREATE TABLE pedido (
+    pedido_id INT NOT NULL,
+    cliente_id INT NOT NULL,
+    reporte_generado_id INT NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    PRIMARY KEY (pedido_id),
+    FOREIGN KEY (cliente_id) REFERENCES usuario (usuario_id)
 );
 
--- Tabla: Generar_reporte
+-- Generar Reporte
 DROP TABLE IF EXISTS generar_reporte;
 CREATE TABLE generar_reporte (
-    id_reporte INT NOT NULL,
-    id_pedido INT NOT NULL,
-    PRIMARY KEY (id_reporte, id_pedido),
-    FOREIGN KEY (id_reporte) REFERENCES reporte (id_reporte),
-    FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido)
+    reporte_id INT NOT NULL,
+    pedido_id INT NOT NULL,
+    FOREIGN KEY (pedido_id) REFERENCES pedido (pedido_id),
+    FOREIGN KEY (reporte_id) REFERENCES reporte (reporte_id)
 );
 
--- Tabla: Realizar_pedido
+-- Realizar Pedido
 DROP TABLE IF EXISTS realizar_pedido;
 CREATE TABLE realizar_pedido (
-    id_pedido INT NOT NULL,
-    id_cliente INT NOT NULL,
+    pedido_id INT NOT NULL,
+    cliente_id INT NOT NULL,
     total INT NOT NULL,
-    PRIMARY KEY (id_pedido),
-    FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido),
-    FOREIGN KEY (id_cliente) REFERENCES usuario (id_usuario)
+    FOREIGN KEY (pedido_id) REFERENCES pedido (pedido_id),
+    FOREIGN KEY (cliente_id) REFERENCES usuario (id_usuario)
 );
 
--- Tabla: Atender_pedido
+-- Atender Pedido
 DROP TABLE IF EXISTS atender_pedido;
 CREATE TABLE atender_pedido (
-    id_pedido INT NOT NULL,
-    id_vendedor INT NOT NULL,
-    PRIMARY KEY (id_pedido),
-    FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido),
-    FOREIGN KEY (id_vendedor) REFERENCES vendedor (id_vendedor)
+    pedido_id INT NOT NULL,
+    vendedor_id INT NOT NULL,
+    FOREIGN KEY (pedido_id) REFERENCES pedido(pedido_id),
+    FOREIGN KEY (vendedor_id) REFERENCES vendedor(id_vendedor)
+);
+
+-- Contener productos
+DROP TABLE IF EXISTS contener_productos;
+CREATE TABLE contener_productos (
+    pedido_id INT NOT NULL,
+    producto_id INT NOT NULL,
+    FOREIGN KEY (pedido_id) REFERENCES pedido(pedido_id),
+    FOREIGN KEY (producto_id) REFERENCES producto(id_producto)
 );
