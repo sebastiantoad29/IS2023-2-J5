@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Detail</title>
+    <style>
+      body {
+          background-color: #eaf7e3;
+          color: #33691e;
+          font-family: Arial, sans-serif;
+          padding: 20px;
+      }
+      
+      h1 {
+          color: #558b2f;
+          margin-bottom: 10px;
+      }
+      
+      p {
+          margin-bottom: 5px;
+      }
+      
+      .product-info {
+          background-color: #fff;
+          border: 1px solid #b6d7a8;
+          padding: 20px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+          border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="product-info">
+      <h1>Detalles del producto</h1>
+      <p><strong>Producto:</strong> {{ product.nombre }}</p>
+      <p><strong>Precio:</strong> {{ product.precio }} $MXN</p>
+      <p><strong>Detalles:</strong> {{ product.descripcion }}</p>
+      <img src="{{ url_for('static', filename=product.img) }}" alt="Product Image">
+  </body>
+    </div>
+  </body>
+</html>

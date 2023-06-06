@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+          background-color: #f2f2f2;
+      }
+
+      .product-list {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+      }
+
+      .product-column {
+          width: calc(50% - 20px);
+      }
+
+      .product-box {
+          background-color: #eaf7e3;
+          border: 1px solid #b6d7a8;
+          padding: 10px;
+          margin-bottom: 20px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .product-box:hover {
+          background-color: #dcedc8;
+      }
+
+      .product-box h3 {
+          color: #33691e;
+          margin-top: 0;
+      }
+
+      .product-box p {
+          color: #558b2f;
+          margin-bottom: 10px;
+      }
+
+      .product-box .description {
+          color: #777;
+      }
+
+      .title-container {
+          text-align: center;
+          background-color: #33691e;
+          color: #ffffff;
+          padding: 20px;
+          margin-bottom: 20px;
+          border-radius: 5px;
+      }
+
+      .title-container h1 {
+          margin: 0;
+          font-size: 32px;
+          font-weight: bold;
+      }
+
+      .details-button {
+          background-color: #558b2f;
+          color: #ffffff;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 3px;
+          cursor: pointer;
+      }
+
+      .details-button:hover {
+          background-color: #33691e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title-container">
+      <h1>MICHELADAS</h1>
+    </div>
+
+    <div class="product-list">
+      <div class="product-column">
+        <!-- Product items for the left column -->
+      </div>
+      <div class="product-column">
+        <!-- Product items for the right column -->
+      </div>
+    </div>
+
+    <script>
+      // Retrieve the products passed from Flask
+      var products = {{ products|tojson }};
+
+      // Get the product column elements
+      var leftColumn = document.querySelector(".product-column:first-child");
+      var rightColumn = document.querySelector(".product-column:last-child");
+
+      // Function to handle the form submission
+      function handleSubmit(event, product) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Create a hidden input field to send the product data
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'product';
+          input.value = JSON.stringify(product);
+          event.target.appendChild(input);
+
+          // Submit the form
+          event.target.submit();
+      }
+
+      // Iterate over the products and generate HTML boxes
+      for (var i = 0; i < products.length; i++) {
+          var product = products[i];
+          var productBox = document.createElement("div");
+          productBox.className = "product-box";
+          productBox.innerHTML = "<h3>" + product.nombre + "</h3>" +
+              "<p>Precio: " + product.precio + "$ MXN</p>" +
+              "<p class='description'>Descripcion: " + product.descripcion + "</p>" +
+              "<form onsubmit='handleSubmit(event, " +
+              JSON.stringify(product) + ")' method='post'>" +
+              "<button type='submit' class='details-button'>Detalles</button>" +
+              "</form>"; // Add the form button element
+
+          // Determine the column to append the product box
+          if (i % 2 === 0) {
+              leftColumn.appendChild(productBox)
+          } else {
+              rightColumn.appendChild(productBox);
+          }
+      }
+    </script>
+  </body>
+</html>
