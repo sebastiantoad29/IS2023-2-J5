@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 #db.init_app(app)
 
 Consultar_info_clientes_vendedor_bp = Blueprint('Consultar_info_clientes_vendedor', __name__, url_prefix='/Consultar_info_clientes_vendedor')
-
+#El caso de uso "Consultar info de los clientes (vendedor)" es completamente análogo al caso de uso "Buscar clientes (vendedor)"
 
 class Vendedor(db.Model):
     id_vendedor = db.Column('Vendedor;', db.Integer, primary_key=True)
