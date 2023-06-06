@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f7ef;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #1b5e20;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .back-button {
+            background-color: #388e3c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .back-button:hover {
+            background-color: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmación</h1>
+        <p>{{ mensaje }}</p>
+        <p>ID del vendedor: {{ vendedor.vendedor_id }}</p>
+        <p>Nombre completo: {{ vendedor.nombre }} {{ vendedor.apellidoP }} {{ vendedor.apellidoM }}</p>
+        <a href="{{ url_for('agregar.agregar_vendedor') }}" class="back-button">Agregar Vendedor</a>
+    </div>
+</body>
+</html>

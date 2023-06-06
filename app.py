@@ -1,17 +1,23 @@
-from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, redirect, url_for
+from alchemyClasses._init_ import db
+from alchemyClasses.vendedor import Vendedor
+from controllers.agregar import agregar_bp
+from controllers.borrar import borrar_bp
 
-app = Flask(__name__)
-db = SQLAlchemy()
-app.config['SQLALCHEMY_DATABASE_URI'] = ""
-app.config.from_mapping(
-    SECRET_KEY='dev'
-)
+app = Flask(_name_)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Starmoon66680@localhost:3306/doñabd'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.secret_key='1208'
+
 db.init_app(app)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+app.register_blueprint(agregar_bp)
+app.register_blueprint(borrar_bp)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/')
+def inicio():
+    return redirect(url_for('agregar.agregar_vendedor'))
+
+if _name_ == '_main_':
+    app.run(port=3000, debug=True)
