@@ -7,7 +7,7 @@ CREATE TABLE administrador (
   apellidoM VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
   password VARCHAR(45) NOT NULL,
-  telefono INT NOT NULL,
+  telefono VARCHAR(20),
   PRIMARY KEY (admin_id)
 );
 
