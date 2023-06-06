@@ -1,13 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
-
-#app = Flask(__name__)
-#db = SQLAlchemy()
-#app.config[
-#    'SQLALCHEMY_DATABASE_URI'] = "mysql://username:password@localhost/db_name"
-#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#app.config['SECRET_KEY'] = 'dev'
-#db.init_app(app)
+from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 
 Actualizar_Cuenta_cliente_bp = Blueprint('Actualizar_Cuenta_cliente', __name__, url_prefix='/Actualizar_Cuenta_cliente')
 
