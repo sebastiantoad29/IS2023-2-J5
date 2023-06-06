@@ -94,6 +94,8 @@
 
         <div style="margin-top: 10px;">
             <a href="{{ url_for('borrar.borrar_vendedor') }}" class="button-link">Borrar Vendedor</a>
+            <a href="{{ url_for('ver.ver_vendedor') }}" class="button-link">Ver Vendedor</a>
+            <a href="{{ url_for('actualizar.actualizar_vendedor') }}" class="button-link">Actualizar Vendedor</a>
         </div>
 
         {% with messages = get_flashed_messages() %}

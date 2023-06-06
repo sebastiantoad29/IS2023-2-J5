@@ -13,11 +13,11 @@ class Vendedor(db.Model):
     password = db.Column('password', db.String(45))
     telefono = db.Column('telefono', db.Integer)
 
-    def _init_(self, vendedor_id, nombre,apellidoP, apellidoM,edad,email,password, telefono):
-        self.vendedor_id= vendedor_id
+    def _init_(self, vendedor_id, nombre, apellidoP, apellidoM, edad, email, password, telefono):
+        self.vendedor_id = vendedor_id
         self.nombre = nombre
         self.apellidoP = apellidoP
-        self.apellidoM= apellidoM
+        self.apellidoM = apellidoM
         self.edad = edad
         self.email = email
         self.password = password
