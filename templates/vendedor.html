@@ -36,6 +36,7 @@
   <h1>Bienvenido(a) Vendedor@</h1>
   <div>
     <a href="/consulta_clientes" class="button">Consultar Información de Clientes</a>
+    <a href="{{ url_for('actualizar_contrasena_vendedor.actualizar_contrasena', vendedor_id=vendedor.vendedor_id) }}" class="button">Actualizar password</a>
     <a href="#" class="button">Ver Status de los Pedidos</a>
     <a href="#" class="button">Ver Reporte de ventas</a>
   </div>
