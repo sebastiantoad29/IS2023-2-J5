@@ -1,5 +1,6 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
 from models.model_login import verificar_credenciales
+from models.model_usuario import get_usuario
 from alchemyClasses.producto import db
 
 login_bp = Blueprint('login', __name__, url_prefix='/login')
@@ -48,7 +49,9 @@ def vendedor():
 @login_bp.route('/usuario')
 def usuario():
     if session.get('rol') == 'usuario':
-        return render_template('usuario.html')
+        email = session.get('data')
+        usuario = get_usuario(email)
+        return render_template('usuario.html', usuario=usuario)
     else:
         return redirect('/')
 

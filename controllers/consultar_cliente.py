@@ -9,4 +9,5 @@ consultar_clientes_bp = Blueprint('consultar_cliente', __name__, url_prefix='/co
 @consultar_clientes_bp.route('/')
 def mostrar_clientes():
     clientes = db.session.query(Usuario).all()
-    return render_template('consultarClientes.html', clientes=clientes)
+    rol = session.get('rol')
+    return render_template('consultarClientes.html', clientes=clientes, rol=rol)

@@ -77,6 +77,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="/login/administrador" class="button-link">INICIO</a>
         <h1>Borrar Vendedor</h1>
         <form action="{{ url_for('borrar.borrar_vendedor') }}" method="POST">
             <input type="email" name="email" placeholder="Correo electrónico del vendedor" required><br>

@@ -7,7 +7,7 @@ class Usuario(db.Model):
     nombre = db.Column('nombre', db.String(50))
     apellidoP = db.Column('apellidoP', db.String(50))
     apellidoM = db.Column('apellidoM', db.String(50))
-    edad = db.Column('edad', db.INTEGER, primary_key=True)
+    edad = db.Column('edad', db.INTEGER)
     email = db.Column('email', db.String(100))
     password = db.Column('password', db.String(100))
     telefono = db.Column('telefono', db.String(20))

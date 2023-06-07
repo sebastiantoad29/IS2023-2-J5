@@ -39,6 +39,7 @@
     <a href="/carrito" class="button">Ir al Carrito</a>
     <a href="/pedidos" class="button">Ver Status de mi Pedido</a>
     <a href="/productos" class="button">Ver productos</a>
+    <a href="{{ url_for('actualizar_Cuenta_cliente.editar_cliente', cliente_id=usuario.id_usuario) }}" class="button">Actualizar Cuenta</a>
   </div>
   <a href="{{ url_for('login.logout') }}">Cerrar sesión</a>
 </body>

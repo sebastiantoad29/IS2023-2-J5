@@ -9,6 +9,7 @@ from controllers.agregar import agregar_bp
 from controllers.borrar import borrar_bp
 from controllers.ver import ver_bp
 from controllers.consultar_cliente import consultar_clientes_bp
+from controllers.actualizar_usuario import actualizar_Cuenta_cliente_bp
 from alchemyClasses.usuario import db
 
 app = Flask(__name__)
@@ -22,6 +23,7 @@ app.register_blueprint(agregar_bp)
 app.register_blueprint(borrar_bp)
 app.register_blueprint(ver_bp)
 app.register_blueprint(consultar_clientes_bp)
+app.register_blueprint(actualizar_Cuenta_cliente_bp)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123pass@localhost:3306/bdd1'
 app.config.from_mapping(
     SECRET_KEY='dev'
