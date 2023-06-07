@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Panel de vendedor</title>
+  <title>Interfaz de Bienvenida</title>
+  <style>
+    body {
+      background-color: #ffffff; /* verde */
+      text-align: center;
+      padding-top: 100px;
+    }
+    
+    h1 {
+      color: #264db8; /* blanco */
+    }
+    
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      border: none;
+      background-color: #37ee13; /* blanco */
+      color: #ffffff; /* verde */
+      font-size: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    
+    .button:hover {
+      background-color: #00FF00; /* verde */
+      color: #FFFFFF; /* blanco */
+    }
+  </style>
 </head>
 <body>
-    <h2>Bienvenido, vendedor</h2>
-    <p>¡Has iniciado sesión como vendedor!</p>
-    <a href="/logout">Cerrar sesión</a>
+  <h1>Bienvenido(a) Vendedor@</h1>
+  <div>
+    <a href="#" class="button">Consultar Información de Clientes</a>
+    <a href="#" class="button">Ver Status de los Pedidos</a>
+    <a href="#" class="button">Ver Reporte de ventas</a>
+  </div>
+  <a href="/logout">Cerrar sesión</a>
 </body>
 </html>
