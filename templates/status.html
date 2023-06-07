@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Status de Pedidos</title>
+</head>
+<body>
+    <h1>Status de Pedidos</h1>
+    <table>
+        <tr>
+            <th>Pedido ID</th>
+            <th>Status</th>
+        </tr>
+        {% for pedido in pedidos %}
+        <tr>
+            <td>{{ pedido.pedido_id }}</td>
+            <td>{{ pedido.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
