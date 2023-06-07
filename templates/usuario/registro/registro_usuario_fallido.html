@@ -1,30 +1,30 @@
+<!DOCTYPE html>
 <html>
   <head>
-  </head>
     <style>
       body {
         text-align: center;
         padding: 40px 0;
         background: #EBF0F5;
       }
-        h1 {
-          color: #FF0000;
-          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-          font-weight: 900;
-          font-size: 40px;
-          margin-bottom: 10px;
-        }
-        p {
-          color: #404F5E;
-          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-          font-size:20px;
-          margin: 0;
-        }
+      h1 {
+        color: #FF0000;
+        font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+        font-weight: 900;
+        font-size: 40px;
+        margin-bottom: 10px;
+      }
+      p {
+        color: #404F5E;
+        font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+        font-size: 20px;
+        margin: 0;
+      }
       i {
         color: #FF0000;
         font-size: 100px;
         line-height: 200px;
-        margin-left:-15px;
+        margin-left: -15px;
       }
       .card {
         background: white;
@@ -34,8 +34,19 @@
         display: inline-block;
         margin: 0 auto;
       }
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #FF0000;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        margin-top: 20px;
+      }
     </style>
-
+  </head>
   <body>
     <div class="card">
       <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
@@ -43,6 +54,7 @@
       </div>
       <h1>Registro fallido</h1>
       <p>No se ha registrado correctamente la cuenta</p>
+      <a class="button" href="/registro_usuario">Reintentar</a>
     </div>
   </body>
 </html>

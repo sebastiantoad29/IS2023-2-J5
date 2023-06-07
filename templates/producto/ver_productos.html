@@ -66,14 +66,47 @@
           padding: 5px 10px;
           border-radius: 3px;
           cursor: pointer;
+          margin-right: 5px;
       }
 
       .details-button:hover {
           background-color: #33691e;
       }
+
+      .add-to-cart-button {
+          background-color: #558b2f;
+          color: #ffffff;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 3px;
+          cursor: pointer;
+      }
+
+      .add-to-cart-button:hover {
+          background-color: #33691e;
+      }
+
+      .navigation {
+          display: flex;
+          justify-content: flex-end;
+          margin-bottom: 20px;
+      }
+
+      .navigation a {
+          color: #ffffff;
+          background-color: #558b2f;
+          padding: 5px 10px;
+          margin-right: 5px;
+          text-decoration: none;
+          border-radius: 3px;
+      }
     </style>
   </head>
   <body>
+    <div class="navigation">
+      <a href="/">Inicio</a>
+    </div>
+
     <div class="title-container">
       <h1>MICHELADAS</h1>
     </div>
@@ -110,6 +143,22 @@
           event.target.submit();
       }
 
+      // Function to handle adding to cart
+      function addToCart(product) {
+          var formData = new FormData();
+          formData.append('product', JSON.stringify(product));
+
+          fetch('/add_to_cart', {
+              method: 'POST',
+              body: formData
+          }).then(response => {
+              // Handle the response
+              console.log('Product added to cart');
+          }).catch(error => {
+              console.error('Error adding product to cart:', error);
+          });
+      }
+
       // Iterate over the products and generate HTML boxes
       for (var i = 0; i < products.length; i++) {
           var product = products[i];
@@ -121,7 +170,8 @@
               "<form onsubmit='handleSubmit(event, " +
               JSON.stringify(product) + ")' method='post'>" +
               "<button type='submit' class='details-button'>Detalles</button>" +
-              "</form>"; // Add the form button element
+              "</form>" +
+              "<button class='add-to-cart-button' onclick='addToCart(" + JSON.stringify(product) + ")'>Agregar al carrito</button>"; // Add the add to cart button
 
           // Determine the column to append the product box
           if (i % 2 === 0) {

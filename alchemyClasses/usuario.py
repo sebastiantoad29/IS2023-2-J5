@@ -3,7 +3,7 @@ from alchemyClasses.__init__ import db
 
 class Usuario(db.Model):
     __tablename__ = 'usuario'
-    id_usuario = db.Column('id_usuario', db.INTEGER, primary_key=True)
+    id_usuario = db.Column('usuario_id', db.INTEGER, primary_key=True)
     nombre = db.Column('nombre', db.String(50))
     apellidoP = db.Column('apellidoP', db.String(50))
     apellidoM = db.Column('apellidoM', db.String(50))

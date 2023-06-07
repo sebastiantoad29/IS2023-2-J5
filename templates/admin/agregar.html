@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Vendedor</title>
+    <style>
+        body {
+            background-color: #F1F1F1;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #CCC;
+        }
+
+        button[type="submit"],
+        .button-link {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover,
+        .button-link:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .error {
+            background-color: #FF0000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agregar Vendedor</h1>
+        <form action="{{ url_for('agregar.agregar_vendedor') }}" method="POST">
+            <input type="text" name="nombre" placeholder="Nombre" required><br>
+            <input type="text" name="apellidoP" placeholder="Apellido Paterno" required><br>
+            <input type="text" name="apellidoM" placeholder="Apellido Materno" required><br>
+            <input type="number" name="edad" placeholder="Edad" required><br>
+            <input type="email" name="email" placeholder="Correo electrónico" required><br>
+            <input type="password" name="password" placeholder="Contraseña" required><br>
+            <input type="tel" name="telefono" placeholder="Teléfono" required><br>
+            <button type="submit">Agregar Vendedor</button>
+        </form>
+
+        <div style="margin-top: 10px;">
+            <a href="{{ url_for('borrar.borrar_vendedor') }}" class="button-link">Borrar Vendedor</a>
+            <a href="{{ url_for('ver.ver_vendedor') }}" class="button-link">Ver Vendedor</a>
+            <a href="{{ url_for('actualizar.actualizar_vendedor') }}" class="button-link">Actualizar Vendedor</a>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {% set category = message[0] %}
+                    {% set message = message[1] %}
+                    <div class="message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

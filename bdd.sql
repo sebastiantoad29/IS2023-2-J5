@@ -1,17 +1,18 @@
 create database bdd1;
-:use bdd1;
+use bdd1;
 CREATE TABLE administrador (
-  id_admin VARCHAR(200) NOT NULL,
+  admin_id VARCHAR(200) NOT NULL,
   nombre VARCHAR(45) NOT NULL,
   apellidoP VARCHAR(45) NOT NULL,
   apellidoM VARCHAR(45) NOT NULL,
-  correo VARCHAR(45) NOT NULL,
-  telefono INT NOT NULL,
-  contraseña VARCHAR(45) NOT NULL,
-  PRIMARY KEY (id_admin)
+  email VARCHAR(45) NOT NULL,
+  password VARCHAR(45) NOT NULL,
+  telefono VARCHAR(20),
+  PRIMARY KEY (admin_id)
 );
+
 CREATE TABLE usuario (
-    id_usuario INT NOT NULL auto_increment,
+    usuario_id INT NOT NULL auto_increment,
     nombre VARCHAR(50) NOT NULL,
     apellidoP VARCHAR(50) NOT NULL,
     apellidoM VARCHAR(50) NOT NULL,
@@ -19,10 +20,11 @@ CREATE TABLE usuario (
     email VARCHAR(100) NOT NULL,
     password VARCHAR(50) NOT NULL,
     telefono VARCHAR(20),
-    PRIMARY KEY (id_usuario)
+    PRIMARY KEY (usuario_id)
 );
+
 CREATE TABLE vendedor (
-    id_vendedor INT NOT NULL,
+    vendedor_id INT NOT NULL auto_increment,
     nombre VARCHAR(50) NOT NULL,
     apellidoP VARCHAR(50) NOT NULL,
     apellidoM VARCHAR(50) NOT NULL,
@@ -30,8 +32,9 @@ CREATE TABLE vendedor (
     email VARCHAR(100) NOT NULL,
     password VARCHAR(50) NOT NULL,
     telefono VARCHAR(20),
-    PRIMARY KEY (id_vendedor)
+    PRIMARY KEY (vendedor_id)
 );
+
 CREATE TABLE producto (
     id_producto INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
@@ -41,14 +44,15 @@ CREATE TABLE producto (
     inventario INT NOT NULL,
     PRIMARY KEY (id_producto)
 );
+
 CREATE TABLE reporte (
     reporte_id INT NOT NULL,
+    cliente_id INT NOT NULL,
     direccion VARCHAR(200) NOT NULL,
     monto INT NOT NULL,
-    id_cliente INT NOT NULL,
-    forma_pago VARCHAR(50) NOT NULL,
     pedido_id INT NOT NULL,
-    PRIMARY KEY (reporte_id)
+    PRIMARY KEY (reporte_id),
+    FOREIGN KEY (cliente_id) REFERENCES usuario (usuario_id)
 );
 
 CREATE TABLE pedido (
@@ -57,26 +61,29 @@ CREATE TABLE pedido (
     reporte_generado_id INT NOT NULL,
     status VARCHAR(20) NOT NULL,
     PRIMARY KEY (pedido_id),
-    FOREIGN KEY (cliente_id) REFERENCES usuario (id_usuario) ON DELETE CASCADE
+    FOREIGN KEY (cliente_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 );
+
 CREATE TABLE generar_reporte (
     reporte_id INT NOT NULL,
     pedido_id INT NOT NULL,
     FOREIGN KEY (pedido_id) REFERENCES pedido (pedido_id),
     FOREIGN KEY (reporte_id) REFERENCES reporte (reporte_id)
 );
+
 CREATE TABLE realizar_pedido (
     pedido_id INT NOT NULL,
     cliente_id INT NOT NULL,
     total INT NOT NULL,
     FOREIGN KEY (pedido_id) REFERENCES pedido (pedido_id),
-    FOREIGN KEY (cliente_id) REFERENCES usuario (id_usuario)
+    FOREIGN KEY (cliente_id) REFERENCES usuario (usuario_id)
 );
+
 CREATE TABLE atender_pedido (
     pedido_id INT NOT NULL,
     vendedor_id INT NOT NULL,
     FOREIGN KEY (pedido_id) REFERENCES pedido(pedido_id),
-    FOREIGN KEY (vendedor_id) REFERENCES vendedor(id_vendedor)
+    FOREIGN KEY (vendedor_id) REFERENCES vendedor(vendedor_id)
 );
 
 CREATE TABLE contener_productos (

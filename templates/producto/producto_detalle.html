@@ -34,7 +34,7 @@
       <p><strong>Producto:</strong> {{ product.nombre }}</p>
       <p><strong>Precio:</strong> {{ product.precio }} $MXN</p>
       <p><strong>Detalles:</strong> {{ product.descripcion }}</p>
-      <img src="{{ url_for('static', filename=product.img) }}" alt="Product Image">
+      <img src="{{ url_for('static', filename='miches/' + product.img) }}" alt="Product Image">
   </body>
     </div>
   </body>

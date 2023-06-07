@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ver Vendedor</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f5f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .error {
+            background-color: #FF0000;
+            color: white;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ver Vendedor</h1>
+
+    <!-- Search form -->
+    <form action="{{ url_for('ver.ver_vendedor') }}" method="POST">
+        <input type="email" name="email" placeholder="Ingrese el correo del vendedor" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Vendedor details table -->
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Edad</th>
+            <th>Correo electrónico</th>
+            <th>Teléfono</th>
+        </tr>
+        {% if vendedor %}
+            <tr>
+                <td>{{ vendedor.nombre }}</td>
+                <td>{{ vendedor.apellidoP }}</td>
+                <td>{{ vendedor.apellidoM }}</td>
+                <td>{{ vendedor.edad }}</td>
+                <td>{{ vendedor.email }}</td>
+                <td>{{ vendedor.telefono }}</td>
+            </tr>
+        {% endif %}
+    </table>
+
+    <!-- Buttons -->
+    <div style="margin-top: 20px;">
+        <button class="button" onclick="window.location.href='{{ url_for('agregar.agregar_vendedor') }}'">Agregar Vendedor</button>
+        <button class="button" onclick="window.location.href='{{ url_for('borrar.borrar_vendedor') }}'">Borrar Vendedor</button>
+    </div>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {% set category = message[0] %}
+                {% set message = message[1] %}
+                <div class="message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clientes</title>
+  <style>
+    body {
+      background-color: #ffffff; /* white */
+      font-family: Arial, sans-serif;
+    }
+    
+    h1 {
+      color: #006400; /* dark green */
+      text-align: center;
+      padding-top: 20px;
+    }
+    
+    table {
+      width: 100%;
+      background-color: #ffffff; /* white */
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    
+    table th, table td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #006400; /* dark green */
+    }
+    
+    table th {
+      background-color: #006400; /* dark green */
+      color: #ffffff; /* white */
+    }
+    
+    table tr:nth-child(even) {
+      background-color: #f2f2f2; /* light gray */
+    }
+    
+    table tr:hover {
+      background-color: #d3d3d3; /* gray */
+    }
+  </style>
+</head>
+<body>
+  <h1>Clientes</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Usuario ID</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Edad</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cliente in clientes %}
+      <tr>
+        <td>{{ cliente.id_usuario }}</td>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.apellidoP }}</td>
+        <td>{{ cliente.apellidoM }}</td>
+        <td>{{ cliente.edad }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.telefono }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

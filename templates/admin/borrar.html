@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Borrar Vendedor</title>
+    <style>
+        body {
+            background-color: #F1F1F1;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #CCC;
+        }
+
+        button[type="submit"],
+        .button-link {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover,
+        .button-link:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .error {
+            background-color: #FF0000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Borrar Vendedor</h1>
+        <form action="{{ url_for('borrar.borrar_vendedor') }}" method="POST">
+            <input type="email" name="email" placeholder="Correo electrónico del vendedor" required><br>
+            <button type="submit">Borrar Vendedor</button>
+        </form>
+
+        <div style="margin-top: 10px;">
+            <a href="{{ url_for('agregar.agregar_vendedor') }}" class="button-link">Agregar Vendedor</a>
+            <a href="{{ url_for('ver.ver_vendedor') }}" class="button-link">Ver Vendedor</a>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {% set category = message[0] %}
+                    {% set message = message[1] %}
+                    <div class="message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

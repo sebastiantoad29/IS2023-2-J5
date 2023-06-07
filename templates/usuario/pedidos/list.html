@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List of Pedidos</title>
+    <style>
+      body {
+        background-color: #f7f7f7;
+        color: #333;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      h2 {
+        color: #00aa77;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .pedido {
+        font-weight: bold;
+      }
+      .status {
+        color: #00aa77;
+      }
+      .btn-inicio {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 5px 10px;
+        background-color: #00aa77;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+      .btn-inicio:hover {
+        background-color: #007755;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Lista de Pedidos</h2>
+    <a href="/" class="btn-inicio">Inicio</a>
+    <ul id="pedidos-list"></ul>
+
+    <script>
+      var pedidos = {{ pedidos | safe }};
+
+      var pedidosList = document.getElementById('pedidos-list');
+      pedidos.forEach(function(pedido) {
+        var li = document.createElement('li');
+        var pedidoElement = document.createElement('span');
+        pedidoElement.textContent = 'Pedido: ' + pedido.pedido;
+        pedidoElement.classList.add('pedido');
+        li.appendChild(pedidoElement);
+
+        var statusElement = document.createElement('span');
+        statusElement.textContent = ' ' + pedido.status;
+        statusElement.classList.add('status');
+        li.appendChild(statusElement);
+
+        pedidosList.appendChild(li);
+      });
+    </script>
+  </body>
+</html>

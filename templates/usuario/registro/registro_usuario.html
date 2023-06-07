@@ -3,6 +3,61 @@
   <head>
     <meta charset="UTF-8">
     <title>REGISTRARSE</title>
+    <style>
+      body {
+          background-color: #eaf7e3;
+          color: #33691e;
+          font-family: Arial, sans-serif;
+          padding: 20px;
+      }
+      
+      h1 {
+          color: #558b2f;
+          margin-bottom: 10px;
+      }
+      
+      .container {
+          background-color: #fff;
+          border: 1px solid #b6d7a8;
+          padding: 20px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+          border-radius: 5px;
+      }
+
+      .form-group {
+          margin-bottom: 20px;
+      }
+
+      label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #b6d7a8;
+          border-radius: 5px;
+          font-size: 16px;
+      }
+
+      button[type="submit"] {
+          background-color: #558b2f;
+          color: #ffffff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          margin-top: 10px;
+      }
+
+      button[type="submit"]:hover {
+          background-color: #33691e;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -15,106 +70,54 @@
           <legend><center><h2><b>Registro</b></h2></center></legend><br>
 
           <!-- Text input-->
-          <div class="jumbotron">
-            <div class="container">
-              <h1 class="display-4">{{ data }}.</h1>
-            </div>
-          </div>
-
           <div class="form-group">
             <label class="col-md-4 control-label">Nombre(s)</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input  name="nombre" placeholder="Nombre" class="form-control"  type="text">
-              </div>
-            </div>
+            <input  name="nombre" placeholder="Nombre" class="form-control"  type="text">
           </div>
 
           <!-- Text input-->
-
           <div class="form-group">
-            <label class="col-md-4 control-label" >Apellido Paterno</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="apellidoP" placeholder="Apellido Paterno" class="form-control"  type="text">
-              </div>
-            </div>
+            <label class="col-md-4 control-label">Apellido Paterno</label>
+            <input name="apellidoP" placeholder="Apellido Paterno" class="form-control"  type="text">
           </div>
 
+          <!-- Text input-->
           <div class="form-group">
-            <label class="col-md-4 control-label" >Apellido Materno</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="apellidoM" placeholder="Apellido Materno" class="form-control"  type="text">
-              </div>
-            </div>
+            <label class="col-md-4 control-label">Apellido Materno</label>
+            <input name="apellidoM" placeholder="Apellido Materno" class="form-control"  type="text">
           </div>
 
-
+          <!-- Text input-->
           <div class="form-group">
-            <label class="col-md-4 control-label">edad</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                <input name="edad" placeholder="edad" class="form-control"  type="text">
-              </div>
-            </div>
+            <label class="col-md-4 control-label">Edad</label>
+            <input name="edad" placeholder="Edad" class="form-control"  type="text">
           </div>
 
           <!-- Text input-->
           <div class="form-group">
             <label class="col-md-4 control-label">E-Mail</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                <input name="email" placeholder="E-Mail" class="form-control"  type="text">
-              </div>
-            </div>
+            <input name="email" placeholder="E-Mail" class="form-control"  type="text">
           </div>
 
-
           <!-- Text input-->
-
           <div class="form-group">
-            <label class="col-md-4 control-label" >Password</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="password" placeholder="Password" class="form-control"  type="password">
-              </div>
-            </div>
+            <label class="col-md-4 control-label">Password</label>
+            <input name="password" placeholder="Password" class="form-control"  type="password">
           </div>
 
           <!-- Text input-->
-
           <div class="form-group">
-            <label class="col-md-4 control-label" >Confirmar Password</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="confirm_password" placeholder="Confirmar Password" class="form-control"  type="password">
-              </div>
-            </div>
+            <label class="col-md-4 control-label">Confirmar Password</label>
+            <input name="confirm_password" placeholder="Confirmar Password" class="form-control"  type="password">
           </div>
 
           <!-- Text input-->
-
           <div class="form-group">
             <label class="col-md-4 control-label">Tel. Contacto.</label>
-            <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                <input name="telefono" placeholder="" class="form-control" type="text">
-              </div>
-            </div>
+            <input name="telefono" placeholder="" class="form-control" type="text">
           </div>
 
-          <Button type="submit">
-            Guardar
-          </button>
+          <button type="submit">Guardar</button>
 
         </fieldset>
       </form>
